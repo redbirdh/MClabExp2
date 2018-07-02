@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/menu_top" />
+        <item
+            android:id="@+id/nav_exp"
+            android:icon="@drawable/ic_flare_black_24dp"
+            android:title="@string/menu_exp" />
+        <item
+            android:id="@+id/nav_que"
+            android:icon="@drawable/ic_assignment_black_24dp"
+            android:title="@string/menu_que" />
+    </group>
+
+    <item android:title="管理">
+        <menu>
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="@string/menu_admin" />
+        </menu>
+    </item>
+
+</menu>
