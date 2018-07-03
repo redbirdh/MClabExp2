@@ -31,9 +31,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/exp_title_ceiling"
+                android:background="@drawable/h1frame"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_dark"
-                android:textSize="40sp" />
+                android:textSize="30sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -53,9 +54,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/exp_title_wall"
+                android:background="@drawable/h1frame"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_dark"
-                android:textSize="40sp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -64,7 +66,7 @@
                 android:text="@string/exp_wall_color"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_dark"
-                android:textSize="30sp" />
+                android:textSize="25sp" />
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -131,6 +133,7 @@
 
                 </TableLayout>
             </RadioGroup>
+
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
@@ -138,7 +141,7 @@
                 android:text="@string/exp_wall_bri"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_dark"
-                android:textSize="30sp" />
+                android:textSize="25sp" />
 
         </LinearLayout>
 
@@ -157,10 +160,82 @@
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/exp_title_vw"
+                android:text="@string/exp_title_vm"
+                android:background="@drawable/h1frame"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_dark"
-                android:textSize="40sp" />
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/exp_vm_situ"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="25sp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RadioButton
+                            android:id="@+id/vm_button_bl"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="5dp"
+                            style="@style/VMRadioStyleBl"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp" />
+
+                        <RadioButton
+                            android:id="@+id/vm_button_ki"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="10dp"
+                            style="@style/VMRadioStyleKi"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp">
+
+                        <RadioButton
+                            android:id="@+id/vm_button_ri"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="5dp"
+                            style="@style/VMRadioStyleRi"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp" />
+
+                        <RadioButton
+                            android:id="@+id/vm_button_be"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="10dp"
+                            style="@style/VMRadioStyleBe"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp" />
+                    </TableRow>
+                </TableLayout>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/exp_vm_sound"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="30sp" />
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

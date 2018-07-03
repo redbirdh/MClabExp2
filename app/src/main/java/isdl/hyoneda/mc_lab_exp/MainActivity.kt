@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onResume() {
         super.onResume()
-        val decor = this.getWindow().getDecorView()
+        val decor = this.window.decorView
         decor.systemUiVisibility = 2 or 4 or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
     }
 
