@@ -19,4 +19,12 @@
     <string name="exp_wall_bri">明るさ</string>
     <string name="exp_vm_situ">映像</string>
     <string name="exp_vm_sound">音量</string>
+    <string name="img_description1">hoge</string>
+
+    <string name="bri_high">かなり明るい</string>
+    <string name="bri_mid">明るい</string>
+    <string name="bri_low">暗い</string>
+    <string name="bri_zero">消灯</string>
+
+    <string name="hello_world">指示があるまで触らないでください</string>
 </resources>

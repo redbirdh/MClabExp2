@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="isdl.hyoneda.mc_lab_exp">
 
-    <!--- これかかなsocket failed eaccesになる -->
+    <!-- - これかかなsocket failed eaccesになる -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -19,6 +19,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

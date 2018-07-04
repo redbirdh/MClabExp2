@@ -67,14 +67,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.nav_top -> {
+                supportFragmentManager.beginTransaction().replace(R.id.frameLayout, titleFragment()).commit()
+            }
             R.id.nav_exp -> {
                 supportFragmentManager.beginTransaction().replace(R.id.frameLayout, ExpFragment()).commit()
             }
             R.id.nav_que -> {
                 supportFragmentManager.beginTransaction().replace(R.id.frameLayout, QuestionFragment()).commit()
-            }
-            R.id.nav_slideshow -> {
-
             }
             R.id.nav_setting -> {
                 supportFragmentManager.beginTransaction().replace(R.id.frameLayout, SettingFragment()).commit()

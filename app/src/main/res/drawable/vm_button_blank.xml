@@ -3,18 +3,18 @@
     <item
         android:state_checked="true"
         android:state_pressed="true"
-        android:drawable="@drawable/thumb_kari" />
+        android:drawable="@drawable/thumb_blank" />
     <!-- (2) -->
     <item
         android:state_checked="true"
-        android:drawable="@drawable/thumb_kari" />
+        android:drawable="@drawable/thumb_blank" />
     <!-- (3) -->
     <item
         android:state_checked="false"
         android:state_pressed="true"
-        android:drawable="@drawable/thumb_kari_forcus" />
+        android:drawable="@drawable/thumb_blank" />
     <!-- (4) -->
     <item
         android:state_checked="false"
-        android:drawable="@drawable/thumb_kari_forcus" />
+        android:drawable="@drawable/thumb_blank" />
 </selector>
