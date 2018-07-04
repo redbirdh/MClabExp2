@@ -23,7 +23,38 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <!-- RadioButtonの設定 -->
+    <!-- 天井照明RadioButtonの設定 -->
+    <style name="CeColor_wa" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/ce_color_wa</item>
+    </style>
+    <style name="CeColor_wh" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/ce_color_wh</item>
+    </style>
+    <style name="CeColor_co" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/ce_color_co</item>
+    </style>
+
+    <!-- 壁面照明RadioButtonの設定 -->
+    <style name="WaColor_or" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/wa_color_or</item>
+    </style>
+    <style name="WaColor_wh" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/wa_color_wh</item>
+    </style>
+    <style name="WaColor_sb" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/wa_color_sb</item>
+    </style>
+    <style name="WaColor_ye" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/wa_color_ye</item>
+    </style>
+    <style name="WaColor_gr" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/wa_color_gr</item>
+    </style>
+    <style name="WaColor_db" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/wa_color_db</item>
+    </style>
+
+    <!-- 擬似窓RadioButtonの設定 -->
     <style name="VMRadioStyleBl" parent="android:Widget.CompoundButton.RadioButton">
         <item name="android:button">@drawable/vm_button_blank</item>
     </style>
