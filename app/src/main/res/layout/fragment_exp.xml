@@ -40,7 +40,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/exp_wall_color"
+                android:text="@string/exp_ce_color"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_dark"
                 android:textSize="25sp" />
@@ -80,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="@string/exp_wall_bri"
+                android:text="@string/exp_ce_bri"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_dark"
                 android:textSize="25sp" />

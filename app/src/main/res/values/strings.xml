@@ -12,13 +12,20 @@
     <string name="menu_exp">環境変更</string>
     <string name="menu_que">アンケート</string>
     <string name="menu_admin">管理</string>
+
     <string name="exp_title_ceiling">天井の照明</string>
     <string name="exp_title_wall">壁面の照明</string>
     <string name="exp_title_vm">擬似窓</string>
+
+    <string name="exp_ce_color">色あい</string>
+    <string name="exp_ce_bri">明るさ</string>
+
     <string name="exp_wall_color">色</string>
     <string name="exp_wall_bri">明るさ</string>
+
     <string name="exp_vm_situ">映像</string>
     <string name="exp_vm_sound">音量</string>
+
     <string name="img_description1">hoge</string>
 
     <string name="bri_high">かなり明るい</string>
