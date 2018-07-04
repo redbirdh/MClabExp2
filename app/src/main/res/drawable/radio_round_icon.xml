@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 選択時 -->
+    <item android:state_checked="true">
+        <shape android:shape="oval">
+            <solid android:color="#4ec4ff" />
+            <size android:width="53dp" android:height="53dp" />
+            <stroke android:width="5dp" android:color="#ff0000" />
+        </shape>
+    </item>
+
+    <!-- タップ時 -->
+    <item android:state_pressed="true" >
+        <shape android:shape="oval">
+        </shape>
+    </item>
+
+    <!-- 未選択時 -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#FF4EC4FF" />
+            <size android:width="48dp" android:height="48dp" />
+        </shape>
+    </item>
+</selector>

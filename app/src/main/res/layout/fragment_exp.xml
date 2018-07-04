@@ -69,11 +69,12 @@
                 android:textSize="25sp" />
 
             <RadioGroup
+                android:id="@+id/color_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="30dp"
                 android:layout_marginStart="30dp"
-                android:background="#d7fbff">
+                android:background="#ffffff">
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -81,28 +82,36 @@
 
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content">
 
                         <RadioButton
-                            android:id="@+id/radioButton5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/radio_1"
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
                             android:layout_weight="1"
-                            android:text="a" />
+                            android:background="@drawable/radio_round_icon"
+                            android:button="@null"
+                            android:text="" />
 
                         <RadioButton
-                            android:id="@+id/radioButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/radio_2"
+                            android:layout_width="50dp"
+                            android:layout_height="41dp"
                             android:layout_weight="1"
-                            android:text="b" />
+                            android:background="@drawable/radio_round_icon"
+                            android:button="@null"
+                            android:paddingEnd="20dp"
+                            android:paddingStart="20dp"
+                            android:text="" />
 
                         <RadioButton
-                            android:id="@+id/radioButton4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/radio_3"
+                            android:layout_width="50dp"
+                            android:layout_height="41dp"
                             android:layout_weight="1"
-                            android:text="c" />
+                            android:background="@drawable/radio_round_icon"
+                            android:button="@null"
+                            android:text="" />
                     </TableRow>
 
                     <TableRow
@@ -110,25 +119,25 @@
                         android:layout_height="match_parent">
 
                         <RadioButton
-                            android:id="@+id/radioButton6"
+                            android:id="@+id/radio_4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="d" />
+                            android:text="なし" />
 
                         <RadioButton
-                            android:id="@+id/radioButton3"
+                            android:id="@+id/radio_5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="e" />
+                            android:text="" />
 
                         <RadioButton
-                            android:id="@+id/radioButton2"
+                            android:id="@+id/radio_6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="f" />
+                            android:text="なし" />
                     </TableRow>
 
                 </TableLayout>
