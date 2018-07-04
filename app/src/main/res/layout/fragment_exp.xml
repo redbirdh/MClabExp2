@@ -47,7 +47,7 @@
 
             <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -55,21 +55,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="RadioButton" />
+                    android:text="" />
 
                 <RadioButton
+                    android:checked="true"
                     android:id="@+id/radioButton10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="RadioButton" />
+                    android:text="" />
 
                 <RadioButton
                     android:id="@+id/radioButton11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="RadioButton" />
+                    android:text="" />
             </RadioGroup>
 
             <TextView
@@ -79,7 +80,8 @@
                 android:text="@string/exp_wall_bri"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_dark"
-                android:textSize="25sp" />
+                android:textSize="25sp"
+                android:paddingTop="5dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -259,7 +261,8 @@
                 android:text="@string/exp_wall_bri"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_dark"
-                android:textSize="25sp" />
+                android:textSize="25sp"
+                android:paddingTop="5dp"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -304,6 +307,7 @@
                             android:text="@string/bri_low" />
 
                         <RadioButton
+                            android:checked="true"
                             android:id="@+id/w_radio_bri_zero"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -351,13 +355,15 @@
 
                 <TableLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingStart="18dp">
 
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <RadioButton
+                            android:checked="true"
                             android:id="@+id/vm_button_bl"
                             style="@style/VMRadioStyleBl"
                             android:layout_width="100dp"
@@ -405,7 +411,37 @@
                 android:text="@string/exp_vm_sound"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_dark"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:paddingTop="5dp"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="13dp">
+
+                <RadioButton
+                    android:id="@+id/vm_volume_0"
+                    style="@style/VMVolume0"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp" />
+                <RadioButton
+                    android:checked="true"
+                    android:id="@+id/vm_volume_1"
+                    style="@style/VMVolume1"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp" />
+                <RadioButton
+                    android:id="@+id/vm_volume_2"
+                    style="@style/VMVolume2"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp" />
+                <RadioButton
+                    android:id="@+id/vm_volume_3"
+                    style="@style/VMVolume3"
+                    android:layout_width="60dp"
+                    android:layout_height="65dp" />
+            </RadioGroup>
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

@@ -36,5 +36,17 @@
     <style name="VMRadioStyleKi" parent="android:Widget.CompoundButton.RadioButton">
         <item name="android:button">@drawable/vm_button_kick</item>
     </style>
+    <style name="VMVolume0" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/vm_sound_0</item>
+    </style>
+    <style name="VMVolume1" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/vm_sound_1</item>
+    </style>
+    <style name="VMVolume2" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/vm_sound_2</item>
+    </style>
+    <style name="VMVolume3" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/vm_sound_3</item>
+    </style>
 
 </resources>

@@ -2,19 +2,9 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:state_checked="true"
-        android:state_pressed="true"
-        android:drawable="@drawable/thumb_river" />
-    <!-- (2) -->
-    <item
-        android:state_checked="true"
-        android:drawable="@drawable/thumb_river" />
-    <!-- (3) -->
+        android:drawable="@drawable/thumb_river_focus" />
+
     <item
         android:state_checked="false"
-        android:state_pressed="true"
-        android:drawable="@drawable/thumb_river_forcus" />
-    <!-- (4) -->
-    <item
-        android:state_checked="false"
-        android:drawable="@drawable/thumb_river_forcus" />
+        android:drawable="@drawable/thumb_river" />
 </selector>
