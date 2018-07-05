@@ -103,11 +103,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
                         <RadioButton
                             android:id="@+id/c_radio_bri_high"
                             android:layout_width="match_parent"
@@ -127,7 +122,6 @@
                             android:layout_height="wrap_content"
                             android:text="@string/bri_low" />
 
-                    </LinearLayout>
                 </RadioGroup>
 
             </LinearLayout>
@@ -247,11 +241,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
                         <RadioButton
                             android:id="@+id/w_radio_bri_high"
                             android:layout_width="match_parent"
@@ -276,7 +265,6 @@
                             android:layout_height="wrap_content"
                             android:checked="true"
                             android:text="@string/bri_zero" />
-                    </LinearLayout>
                 </RadioGroup>
 
             </LinearLayout>
@@ -313,61 +301,57 @@
                 android:textColor="@android:color/background_dark"
                 android:textSize="25sp" />
 
-            <RadioGroup
+
+            <isdl.hyoneda.mc_lab_exp.TableRadioGroup
                 android:id="@+id/vm_situ_group"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingStart="18dp">
 
-                <TableLayout
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RadioButton
+                        android:id="@+id/vm_button_bl"
+                        style="@style/VMRadioStyleBl"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="10dp"
+                        android:checked="true" />
+
+                    <RadioButton
+                        android:id="@+id/vm_button_ki"
+                        style="@style/VMRadioStyleKi"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="5dp" />
+                </TableRow>
+
+                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingStart="18dp">
+                    android:layout_marginTop="10dp">
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <RadioButton
+                        android:id="@+id/vm_button_ri"
+                        style="@style/VMRadioStyleRi"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="10dp" />
 
-                        <RadioButton
-                            android:id="@+id/vm_button_bl"
-                            style="@style/VMRadioStyleBl"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginStart="10dp"
-                            android:checked="true" />
-
-                        <RadioButton
-                            android:id="@+id/vm_button_ki"
-                            style="@style/VMRadioStyleKi"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginEnd="10dp"
-                            android:layout_marginStart="5dp" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp">
-
-                        <RadioButton
-                            android:id="@+id/vm_button_ri"
-                            style="@style/VMRadioStyleRi"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginStart="10dp" />
-
-                        <RadioButton
-                            android:id="@+id/vm_button_be"
-                            style="@style/VMRadioStyleBe"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginEnd="10dp"
-                            android:layout_marginStart="5dp" />
-                    </TableRow>
-                </TableLayout>
-            </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/vm_button_be"
+                        style="@style/VMRadioStyleBe"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="5dp" />
+                </TableRow>
+            </isdl.hyoneda.mc_lab_exp.TableRadioGroup>
 
             <TextView
                 android:id="@+id/fsdaf"
