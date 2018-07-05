@@ -103,24 +103,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                        <RadioButton
-                            android:id="@+id/c_radio_bri_high"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/bri_high" />
+                    <RadioButton
+                        android:id="@+id/c_radio_bri_high"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bri_high" />
 
-                        <RadioButton
-                            android:id="@+id/c_radio_bri_mid"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:checked="true"
-                            android:text="@string/bri_mid" />
+                    <RadioButton
+                        android:id="@+id/c_radio_bri_mid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/bri_mid" />
 
-                        <RadioButton
-                            android:id="@+id/c_radio_bri_low"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/bri_low" />
+                    <RadioButton
+                        android:id="@+id/c_radio_bri_low"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bri_low" />
 
                 </RadioGroup>
 

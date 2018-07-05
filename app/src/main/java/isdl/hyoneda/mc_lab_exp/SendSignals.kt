@@ -1,5 +1,7 @@
 package isdl.hyoneda.mc_lab_exp
 
+import android.content.AsyncTaskLoader
+import android.content.Context
 import android.util.Log
 import org.json.JSONObject
 import java.net.*
@@ -14,15 +16,9 @@ import okhttp3.RequestBody
 import java.net.HttpURLConnection
 import java.net.*
 
-fun httpPut(url: String) {
-    val con = URL(url).openConnection() as HttpURLConnection
-    con.apply {
-        requestMethod = "PUT"
-        connectTimeout = 3000
-        readTimeout = 5000
-        instanceFollowRedirects = true
-        con.connect()
-        Log.i("SEND", con.responseMessage)
+class SendSignals<T>(context : Context) : AsyncTaskLoader<Int>(context) {
+    override fun loadInBackground(): Int {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
 
