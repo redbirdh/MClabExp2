@@ -27,20 +27,19 @@ class ExpFragment : Fragment(){
         val v : View = inflater.inflate(R.layout.fragment_exp, container, false)
 
         // まとめてラジオグループをゲット
-        val waColorGroup = v.findViewById<RadioGroup>(R.id.w_color_group)
         val waBriGroup = v.findViewById<RadioGroup>(R.id.w_bri_group)
         val vmSituGroup = v.findViewById<RadioGroup>(R.id.vm_situ_group)
         val vmVolumeGroup = v.findViewById<RadioGroup>(R.id.vm_volume_group)
-        //val hoge : TableRadioGroup = v.findViewById<RadioGroup>(R.id.w_color_group)
+        val waColorGroup = v.findViewById<TableRadioGroup>(R.id.w_color_group)
         
         waColorGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {
-                R.id.wa_color_ye -> Log.i("RADIO_OP", "1")
-                R.id.wa_color_wh -> Log.i("RADIO_OP", "2")
-                R.id.wa_color_or -> Log.i("RADIO_OP", "3")
-                R.id.wa_color_sb -> Log.i("RADIO_OP", "4")
-                R.id.wa_color_db -> Log.i("RADIO_OP", "5")
-                R.id.wa_color_gr -> Log.i("RADIO_OP", "6")
+                R.id.wa_color_ye -> Log.i("RADIO_OP", "壁面1")
+                R.id.wa_color_wh -> Log.i("RADIO_OP", "壁面2")
+                R.id.wa_color_or -> Log.i("RADIO_OP", "壁面3")
+                R.id.wa_color_sb -> Log.i("RADIO_OP", "壁面4")
+                R.id.wa_color_db -> Log.i("RADIO_OP", "壁面5")
+                R.id.wa_color_gr -> Log.i("RADIO_OP", "壁面6")
                 else -> throw IllegalArgumentException("not supported")
             }
         }

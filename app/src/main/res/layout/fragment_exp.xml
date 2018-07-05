@@ -56,8 +56,7 @@
                     style="@style/CeColor_wa"
                     android:layout_width="65dp"
                     android:layout_height="70dp"
-                    android:layout_marginStart="17dp"
-                    android:scaleType="centerCrop" />
+                    android:layout_marginStart="17dp" />
 
                 <RadioButton
                     android:id="@+id/ce_color_wh"
@@ -165,61 +164,59 @@
                 android:textColor="@android:color/background_dark"
                 android:textSize="25sp" />
 
-            <RadioGroup
+            <isdl.hyoneda.mc_lab_exp.TableRadioGroup
                 android:id="@+id/w_color_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
                 android:background="#ffffff">
 
-                <LinearLayout
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                            android:id="@+id/wa_color_ye"
+                            style="@style/WaColor_ye"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content" />
 
                     <RadioButton
-                        android:id="@+id/wa_color_ye"
-                        style="@style/WaColor_ye"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content" />
+                            android:id="@+id/wa_color_wh"
+                            style="@style/WaColor_wh"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:checked="true" />
 
                     <RadioButton
-                        android:id="@+id/wa_color_wh"
-                        style="@style/WaColor_wh"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:checked="true" />
+                            android:id="@+id/wa_color_sb"
+                            style="@style/WaColor_sb"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content" />
+                </TableRow>
 
-                    <RadioButton
-                        android:id="@+id/wa_color_sb"
-                        style="@style/WaColor_sb"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
-                <LinearLayout
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="10dp">
+                    android:layout_height="wrap_content">
 
                     <RadioButton
-                        android:id="@+id/wa_color_db"
-                        style="@style/WaColor_db"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content" />
+                            android:id="@+id/wa_color_db"
+                            style="@style/WaColor_db"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content" />
 
                     <RadioButton
-                        android:id="@+id/wa_color_gr"
-                        style="@style/WaColor_gr"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content" />
+                            android:id="@+id/wa_color_gr"
+                            style="@style/WaColor_gr"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content" />
 
                     <RadioButton
-                        android:id="@+id/wa_color_or"
-                        style="@style/WaColor_or"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </RadioGroup>
+                            android:id="@+id/wa_color_or"
+                            style="@style/WaColor_or"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content" />
+                </TableRow>
+            </isdl.hyoneda.mc_lab_exp.TableRadioGroup>
 
             <TextView
                 android:id="@+id/textView8"
