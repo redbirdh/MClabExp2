@@ -23,6 +23,7 @@ class ExpFragment : Fragment(){
 
     // UIに関してはここをいじる
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        println("expFlagment スタート")
         val v : View = inflater.inflate(R.layout.fragment_exp, container, false)
 
         // まとめてラジオグループをゲット
@@ -30,6 +31,7 @@ class ExpFragment : Fragment(){
         val waBriGroup = v.findViewById<RadioGroup>(R.id.w_bri_group)
         val vmSituGroup = v.findViewById<RadioGroup>(R.id.vm_situ_group)
         val vmVolumeGroup = v.findViewById<RadioGroup>(R.id.vm_volume_group)
+        //val hoge : TableRadioGroup = v.findViewById<RadioGroup>(R.id.w_color_group)
         
         waColorGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {
@@ -60,6 +62,6 @@ class ExpFragment : Fragment(){
                 else -> throw IllegalArgumentException("not supported")
             }
         }
-        return inflater.inflate(R.layout.fragment_exp, container, false)
+        return v
     }
 }

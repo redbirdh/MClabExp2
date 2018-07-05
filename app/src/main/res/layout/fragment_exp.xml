@@ -128,11 +128,6 @@
                             android:layout_height="wrap_content"
                             android:text="@string/bri_low" />
 
-                        <RadioButton
-                            android:id="@+id/c_radio_bri_zero"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/bri_zero" />
                     </LinearLayout>
                 </RadioGroup>
 
