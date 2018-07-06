@@ -40,16 +40,40 @@ class ExpFragment : Fragment() {
 
         ceColorGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {
-                R.id.ce_color_wa -> Log.i("RADIO_OP", "天井色1")
-                R.id.ce_color_wh -> Log.i("RADIO_OP", "天井色2")
-                R.id.ce_color_co -> Log.i("RADIO_OP", "天井色3")
+                R.id.ce_color_wa -> {
+                    Log.i("RADIO_OP", "天井色1")
+                    state.c_color = 0
+                    SendSignalToCeiling().execute()
+                }
+                R.id.ce_color_wh -> {
+                    Log.i("RADIO_OP", "天井色2")
+                    state.c_color = 1
+                    SendSignalToCeiling().execute()
+                }
+                R.id.ce_color_co -> {
+                    Log.i("RADIO_OP", "天井色3")
+                    state.c_color = 2
+                    SendSignalToCeiling().execute()
+                }
             }
         }
         ceBriGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {
-                R.id.c_radio_bri_high -> Log.i("RADIO_OP", "天井明るさ1")
-                R.id.c_radio_bri_mid -> Log.i("RADIO_OP", "天井明るさ2")
-                R.id.c_radio_bri_low -> Log.i("RADIO_OP", "天井明るさ3")
+                R.id.c_radio_bri_high -> {
+                    Log.i("RADIO_OP", "天井明るさ1")
+                    state.c_bri = 2
+                    SendSignalToCeiling().execute()
+                }
+                R.id.c_radio_bri_mid -> {
+                    Log.i("RADIO_OP", "天井明るさ2")
+                    state.c_bri = 1
+                    SendSignalToCeiling().execute()
+                }
+                R.id.c_radio_bri_low -> {
+                    Log.i("RADIO_OP", "天井明るさ3")
+                    state.c_bri = 0
+                    SendSignalToCeiling().execute()
+                }
             }
         }
         waColorGroup.setOnCheckedChangeListener { _, checkedId: Int ->
@@ -114,19 +138,51 @@ class ExpFragment : Fragment() {
         }
         vmSituGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {
-                R.id.vm_button_bl -> Log.i("RADIO_OP", "擬似窓blank")
-                R.id.vm_button_ri -> Log.i("RADIO_OP", "擬似窓river")
-                R.id.vm_button_be -> Log.i("RADIO_OP", "擬似窓beach")
-                R.id.vm_button_ki -> Log.i("RADIO_OP", "擬似窓kick")
+                R.id.vm_button_bl -> {
+                    Log.i("RADIO_OP", "擬似窓blank")
+                    state.v_situ = "blank"
+                    SendSignalToVMSitu().execute()
+                }
+                R.id.vm_button_ri -> {
+                    Log.i("RADIO_OP", "擬似窓river")
+                    state.v_situ = "river"
+                    SendSignalToVMSitu().execute()
+                }
+                R.id.vm_button_be -> {
+                    Log.i("RADIO_OP", "擬似窓beach")
+                    state.v_situ = "beach"
+                    SendSignalToVMSitu().execute()
+                }
+                R.id.vm_button_ki -> {
+                    Log.i("RADIO_OP", "擬似窓kick")
+                    state.v_situ = "kick"
+                    SendSignalToVMSitu().execute()
+                }
                 else -> throw IllegalArgumentException("not supported")
             }
         }
         vmVolumeGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {
-                R.id.vm_volume_0 -> Log.i("RADIO_OP", "音量0")
-                R.id.vm_volume_1 -> Log.i("RADIO_OP", "音量1")
-                R.id.vm_volume_2 -> Log.i("RADIO_OP", "音量2")
-                R.id.vm_volume_3 -> Log.i("RADIO_OP", "音量3")
+                R.id.vm_volume_0 -> {
+                    Log.i("RADIO_OP", "音量0")
+                    state.v_volume = 0
+                    SendSignalToVMVol().execute()
+                }
+                R.id.vm_volume_1 -> {
+                    Log.i("RADIO_OP", "音量1")
+                    state.v_volume = 1
+                    SendSignalToVMVol().execute()
+                }
+                R.id.vm_volume_2 -> {
+                    Log.i("RADIO_OP", "音量2")
+                    state.v_volume = 2
+                    SendSignalToVMVol().execute()
+                }
+                R.id.vm_volume_3 -> {
+                    Log.i("RADIO_OP", "音量3")
+                    state.v_volume = 3
+                    SendSignalToVMVol().execute()
+                }
                 else -> throw IllegalArgumentException("not supported")
             }
         }
@@ -135,6 +191,24 @@ class ExpFragment : Fragment() {
     inner class SendSignalToWall : AsyncTask<Void, Int, Void>() {
         override fun doInBackground(vararg params: Void): Void? {
             jsonPut()
+            return null
+        }
+    }
+    inner class SendSignalToCeiling : AsyncTask<Void, Int, Void>() {
+        override fun doInBackground(vararg params: Void): Void? {
+            tcpSendCeiling()
+            return null
+        }
+    }
+    inner class SendSignalToVMSitu : AsyncTask<Void, Int, Void>() {
+        override fun doInBackground(vararg params: Void): Void? {
+            tcpSendVM()
+            return null
+        }
+    }
+    inner class SendSignalToVMVol : AsyncTask<Void, Int, Void>() {
+        override fun doInBackground(vararg params: Void): Void? {
+            tcpSendVM2()
             return null
         }
     }

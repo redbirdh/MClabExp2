@@ -7,6 +7,7 @@ import org.json.JSONObject
 import java.net.*
 import android.os.AsyncTask
 import android.widget.TextView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
@@ -15,13 +16,49 @@ import okhttp3.RequestBody
 
 
 // TCP socket通信
-fun send(host : String, port : Int, message : ByteArray) {
+fun tcpSendCeiling() {
     try {
+        //val host : String = "192.168.10.20" // KICK
+        val host : String = "172.20.11.55" // test
+        val port : Int = 50001 // KICK
+        val roomId : Int = 1
+        var white_sig : Int = 0
+        var warm_sig : Int = 0
+        if (state.c_color == 0 && state.c_bri == 0) {
+            white_sig = 23
+            warm_sig = 144
+        }else if (state.c_color == 0 && state.c_bri == 1) {
+            white_sig = 37
+            warm_sig = 235
+        }else if (state.c_color == 0 && state.c_bri == 2) {
+            white_sig = 55
+            warm_sig = 356
+        }else if (state.c_color == 1 && state.c_bri == 0) {
+            white_sig = 110
+            warm_sig = 53
+        }else if (state.c_color == 1 && state.c_bri == 1) {
+            white_sig = 181
+            warm_sig = 92
+        }else if (state.c_color == 1 && state.c_bri == 2) {
+            white_sig = 254
+            warm_sig = 124
+        }else if (state.c_color == 2 && state.c_bri == 0) {
+            white_sig = 160
+            warm_sig = 0
+        }else if (state.c_color == 2 && state.c_bri == 1) {
+            white_sig = 268
+            warm_sig = 0
+        }else if (state.c_color == 2 && state.c_bri == 2) {
+            white_sig = 390
+            warm_sig = 0
+        }
+        val message : String = "MANUAL_SIG-ALL\r\n$roomId,$white_sig,$warm_sig"
         val address = InetAddress.getByName(host)
         val socket = Socket(address, port)
         val fdin = socket.getInputStream()
         val fdout = socket.getOutputStream()
-        fdout.write(message)
+        Log.i("ceiling", message)
+        fdout.write(message.toByteArray())
         fdout.flush()
         fdin.close()
         fdout.close()
@@ -30,6 +67,73 @@ fun send(host : String, port : Int, message : ByteArray) {
         Log.e("TCPソケット通信", e.toString())
     }
 }
+/*=========================================================================*/
+// 擬似窓
+// 実験室1 IP : 192.168.10.
+// 実験室2 IP : 192.168.10.23
+// PORT   : 50005
+// SIGNAL : "BLANK" "MOVE1, 2, 3" "VOLUME0, 1, 2, 3"
+// 返答を待つとダメ?
+/*=========================================================================*/
+// シチュエーション変更
+fun tcpSendVM() {
+    try {
+        //val host : String = "192.168.10." // 実験室1
+        //val host : String = "192.168.10.23" // 実験室2
+        val host : String = "172.20.11.55" //test
+        val port : Int = 50005
+        var message : String = ""
+        val address = InetAddress.getByName(host)
+        val socket = Socket(address, port)
+        val fdin = socket.getInputStream()
+        val fdout = socket.getOutputStream()
+
+        when (state.v_situ) {
+            "blank" -> message = "BLANK"
+            "kick" -> message = "MOVE1"
+            "river" -> message = "MOVE2"
+            "beach" -> message = "MOVE3"
+        }
+
+        fdout.write(message.toByteArray())
+        fdout.flush()
+        fdin.close()
+        fdout.close()
+    }
+    catch(e : Exception){
+        Log.e("TCPソケット通信", e.toString())
+    }
+}
+// ボリューム変更
+fun tcpSendVM2() {
+    try {
+        //val host : String = "192.168.10." // 実験室1
+        //val host : String = "192.168.10.23" // 実験室2
+        val host : String = "172.20.11.55" //test
+        val port : Int = 50005
+        var message : String = ""
+        val address = InetAddress.getByName(host)
+        val socket = Socket(address, port)
+        val fdin = socket.getInputStream()
+        val fdout = socket.getOutputStream()
+
+        when (state.v_volume) {
+            0 -> message = "VOLUME0"
+            1 -> message = "VOLUME1"
+            2 -> message = "VOLUME2"
+            3 -> message = "VOLUME3"
+        }
+
+        fdout.write(message.toByteArray())
+        fdout.flush()
+        fdin.close()
+        fdout.close()
+    }
+    catch(e : Exception){
+        Log.e("TCPソケット通信", e.toString())
+    }
+}
+/*
 // UDP socket通信
 fun sendSignal(): Boolean{
     val senderPort = 0
@@ -53,6 +157,7 @@ fun sendSignal(): Boolean{
     }
     return ret
 }
+*/
 fun sendSignal(_ip: String, _port: Int, _signal: String): Boolean{
     val senderPort = 0
 
