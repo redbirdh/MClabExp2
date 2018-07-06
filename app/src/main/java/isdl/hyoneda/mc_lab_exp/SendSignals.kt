@@ -13,14 +13,6 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 
-import java.net.HttpURLConnection
-import java.net.*
-
-class SendSignals<T>(context : Context) : AsyncTaskLoader<Int>(context) {
-    override fun loadInBackground(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-}
 
 // TCP socket通信
 fun send(host : String, port : Int, message : ByteArray) {
@@ -87,43 +79,62 @@ fun sendSignal(_ip: String, _port: Int, _signal: String): Boolean{
 // jsonをputする
 //fun jsonPut(id: Int, flag: Boolean) {
 fun jsonPut() {
-    val ipAddr = "172.20.11.99"
-    //val userName = "ak9-W3P7uTwKqCOHdB2HLaDvPB71FIoyIKXjW6Rl"
-    val userName = "jy7Kk8cyAJ0XPmjj6vEzwEL3sV1OlJvjBU8gTT9i" // KICK 01
-    //var url = "http://172.20.11.99/api/ak9-W3P7uTwKqCOHdB2HLaDvPB71FIoyIKXjW6Rl/lights/$id/state"
+    //val ipAddr = "172.20.11.99" // KC101(KC104)
+    val ipAddr = "172.20.11.101" // KC111
+    //val ipAddr = "192.168.10.15" // KICK 01
+    //val ipAddr = "192.168.10.16" // KICK 02
+    //val userName = "XXJEdeefpEJrKMfFJgjX0owEFyspfhlclRknCdWB" // KC101(KC104)
+    val userName = "MS4ah6torLCZ6vfaJwldQ15bhdbCQxdQv6S-XW12" // KC111
+    //val userName = "jy7Kk8cyAJ0XPmjj6vEzwEL3sV1OlJvjBU8gTT9i" // KICK 01
+    //val userName = "" // KICK 02
     var url: String
     val client: OkHttpClient = OkHttpClient.Builder().build()
+
     // json生成
-    val json = JSONObject()
-    when (state.w_color) {
-        "none" -> {
-            json.put("on", false)
+    //val json = JSONObject()
+    var json : String
+    var bri : Int = 0
+    var color : String = ""
+    if (state.w_bri == 0) {
+        json = "{\"on\":false}"
+    } else {
+        when (state.w_color) {
+            0 -> {
+                color = "\"colormode\":\"xy\", \"xy\":[0.4184, 0.4306]"
+            }
+            1 -> {
+                color = "\"hue\":0, \"sat\":0"
+            }
+            2 -> {
+                color = "\"colormode\":\"xy\", \"xy\":[0.4877, 0.4358]"
+            }
+            3 -> {
+                color = "\"colormode\":\"xy\", \"xy\":[0.227, 0.2079]"
+            }
+            4 -> {
+                color = "\"colormode\":\"xy\", \"xy\":[0.1807, 0.0662]"
+            }
+            5 -> {
+                color = "\"colormode\":\"xy\", \"xy\":[0.3959, 0.493]"
+            }
         }
-        "white" -> {
-            json.put("on", true)
-            json.put("hue", 37000)
-            json.put("sat", 70)
+        when (state.w_bri) {
+            1 -> bri = 70
+            2 -> bri = 160
+            3 -> bri = 254
         }
-        "warm" -> {
-            json.put("on", true)
-            json.put("hue", 15000)
-            json.put("sat", 130)
-        }
-        "cool" -> {
-            json.put("on", true)
-            json.put("hue", 42000)
-            json.put("sat", 200)
-        }
+        json = "{\"on\":true, $color, \"bri\":$bri}"
     }
-    json.put("bri", state.w_luminance)
+
     // PUT
-    val putBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json.toString())
-    var request : Request
-    for (i in 1..7) {
-        url = "http://$ipAddr/api/$userName/lights/$i/state"
-        request = Request.Builder().url(url).put(putBody).build()
-        client.newCall(request).execute()
-    }
+    val putBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json)
+    val request : Request
+
+    url = "http://$ipAddr/api/$userName/groups/1/action"
+    request = Request.Builder().url(url).put(putBody).build()
+    Log.i("wall", json)
+    client.newCall(request).execute()
+
     // getResult
     //val result: String? = response.body()?.string()
     //response.close()

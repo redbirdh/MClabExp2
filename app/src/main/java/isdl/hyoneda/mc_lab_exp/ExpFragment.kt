@@ -1,10 +1,12 @@
 package isdl.hyoneda.mc_lab_exp
 
 import android.content.DialogInterface
+import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.support.v4.app.Fragment
+import android.support.v4.app.LoaderManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,9 +19,10 @@ import android.widget.Toast
 *
 */
 
-class ExpFragment : Fragment(){
+class ExpFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     // UIに関してはここをいじる
@@ -51,21 +54,61 @@ class ExpFragment : Fragment(){
         }
         waColorGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {
-                R.id.wa_color_ye -> Log.i("RADIO_OP", "壁面色1")
-                R.id.wa_color_wh -> Log.i("RADIO_OP", "壁面色2")
-                R.id.wa_color_or -> Log.i("RADIO_OP", "壁面色3")
-                R.id.wa_color_sb -> Log.i("RADIO_OP", "壁面色4")
-                R.id.wa_color_db -> Log.i("RADIO_OP", "壁面色5")
-                R.id.wa_color_gr -> Log.i("RADIO_OP", "壁面色6")
+                R.id.wa_color_ye -> { //左上
+                    Log.i("RADIO_OP", "壁面色1")
+                    state.w_color = 0
+                    SendSignalToWall().execute()
+                }
+                R.id.wa_color_wh -> { //中上
+                    Log.i("RADIO_OP", "壁面色2")
+                    state.w_color = 1
+                    SendSignalToWall().execute()
+                }
+                R.id.wa_color_or -> { //右下
+                    Log.i("RADIO_OP", "壁面色3")
+                    state.w_color = 2
+                    SendSignalToWall().execute()
+                }
+                R.id.wa_color_sb -> { //右上
+                    Log.i("RADIO_OP", "壁面色4")
+                    state.w_color = 3
+                    SendSignalToWall().execute()
+                }
+                R.id.wa_color_db -> { //左下
+                    Log.i("RADIO_OP", "壁面色5")
+                    state.w_color = 4
+                    SendSignalToWall().execute()
+                }
+                R.id.wa_color_gr -> { //中下
+                    Log.i("RADIO_OP", "壁面色6")
+                    state.w_color = 5
+                    SendSignalToWall().execute()
+                }
                 else -> throw IllegalArgumentException("not supported")
             }
         }
         waBriGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {
-                R.id.w_radio_bri_high -> Log.i("RADIO_OP", "壁面明るさ1")
-                R.id.w_radio_bri_mid -> Log.i("RADIO_OP", "壁面明るさ2")
-                R.id.w_radio_bri_low -> Log.i("RADIO_OP", "壁面明るさ3")
-                R.id.w_radio_bri_zero -> Log.i("RADIO_OP", "壁面明るさ4")
+                R.id.w_radio_bri_high -> {
+                    Log.i("RADIO_OP", "壁面明るさ1")
+                    state.w_bri = 3
+                    SendSignalToWall().execute()
+                }
+                R.id.w_radio_bri_mid -> {
+                    Log.i("RADIO_OP", "壁面明るさ2")
+                    state.w_bri = 2
+                    SendSignalToWall().execute()
+                }
+                R.id.w_radio_bri_low -> {
+                    Log.i("RADIO_OP", "壁面明るさ3")
+                    state.w_bri = 1
+                    SendSignalToWall().execute()
+                }
+                R.id.w_radio_bri_zero -> {
+                    Log.i("RADIO_OP", "壁面明るさ4")
+                    state.w_bri = 0
+                    SendSignalToWall().execute()
+                }
                 else -> throw IllegalArgumentException("not supported")
             }
         }
@@ -89,4 +132,11 @@ class ExpFragment : Fragment(){
         }
         return v
     }
+    inner class SendSignalToWall : AsyncTask<Void, Int, Void>() {
+        override fun doInBackground(vararg params: Void): Void? {
+            jsonPut()
+            return null
+        }
+    }
 }
+

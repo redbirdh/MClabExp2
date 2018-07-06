@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 // データセットの初期化
-var state = State()
+var state = States()
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_view.setNavigationItemSelectedListener(this)
 
         // 初期画面をexp_fragmentにする
-        supportFragmentManager.beginTransaction().replace(R.id.frameLayout, titleFragment()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.frameLayout, ExpFragment()).commit()
     }
 
     override fun onBackPressed() {
@@ -85,8 +85,3 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 }
-
-data class State (
-        var w_color : String = "none",
-        var w_luminance : Int = 255
-)
