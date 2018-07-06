@@ -38,6 +38,8 @@ class ExpFragment : Fragment() {
         val vmSituGroup : TableRadioGroup = v.findViewById(R.id.vm_situ_group)
         val vmVolumeGroup : RadioGroup = v.findViewById(R.id.vm_volume_group)
 
+        Log.i("aaaaaaaaaaaaaaaa", setting.room.toString())
+
         ceColorGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {
                 R.id.ce_color_wa -> {

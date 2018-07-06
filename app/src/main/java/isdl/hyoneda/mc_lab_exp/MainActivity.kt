@@ -1,6 +1,8 @@
 package isdl.hyoneda.mc_lab_exp
 
 import android.app.FragmentManager
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
@@ -16,6 +18,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 
 // データセットの初期化
 var state = States()
+var setting = Setting()
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -40,6 +43,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         // 初期画面をexp_fragmentにする
         supportFragmentManager.beginTransaction().replace(R.id.frameLayout, ExpFragment()).commit()
+
+        // 設定画面を作ります
+        val pref : SharedPreferences = applicationContext.getSharedPreferences("config", Context.MODE_PRIVATE)
     }
 
     override fun onBackPressed() {

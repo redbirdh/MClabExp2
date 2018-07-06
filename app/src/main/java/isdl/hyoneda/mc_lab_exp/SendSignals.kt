@@ -18,10 +18,22 @@ import okhttp3.RequestBody
 // TCP socket通信
 fun tcpSendCeiling() {
     try {
-        //val host : String = "192.168.10.20" // KICK
-        val host : String = "172.20.11.55" // test
+        var host : String = ""
+        var roomId : Int = 1
+        when (setting.room){
+            0 -> { // KICK
+                host = "192.168.10.20"
+                roomId = 1
+            }
+            1 -> { // KICK
+                host = "192.168.10.20"
+                roomId = 2
+            }
+            2 -> {
+                host = "172.20.11.55"
+            }
+        }
         val port : Int = 50001 // KICK
-        val roomId : Int = 1
         var white_sig : Int = 0
         var warm_sig : Int = 0
         if (state.c_color == 0 && state.c_bri == 0) {
@@ -78,9 +90,18 @@ fun tcpSendCeiling() {
 // シチュエーション変更
 fun tcpSendVM() {
     try {
-        //val host : String = "192.168.10." // 実験室1
-        //val host : String = "192.168.10.23" // 実験室2
-        val host : String = "172.20.11.55" //test
+        var host : String = "" //test
+        when (setting.room){
+            0 -> { // KICK
+                host = "192.168.10.22" // 実験室1
+            }
+            1 -> { // KICK
+                host = "192.168.10.23" // 実験室2
+            }
+            2 -> {
+                host = "172.20.11.55"
+            }
+        }
         val port : Int = 50005
         var message : String = ""
         val address = InetAddress.getByName(host)
@@ -107,9 +128,18 @@ fun tcpSendVM() {
 // ボリューム変更
 fun tcpSendVM2() {
     try {
-        //val host : String = "192.168.10." // 実験室1
-        //val host : String = "192.168.10.23" // 実験室2
-        val host : String = "172.20.11.55" //test
+        var host : String = ""
+        when (setting.room){
+            0 -> { // KICK
+                host = "192.168.10.22" // 実験室1
+            }
+            1 -> { // KICK
+                host = "192.168.10.23" // 実験室2
+            }
+            2 -> {
+                host = "172.20.11.55"
+            }
+        }
         val port : Int = 50005
         var message : String = ""
         val address = InetAddress.getByName(host)
@@ -184,20 +214,31 @@ fun sendSignal(_ip: String, _port: Int, _signal: String): Boolean{
 // jsonをputする
 //fun jsonPut(id: Int, flag: Boolean) {
 fun jsonPut() {
-    //val ipAddr = "172.20.11.99" // KC101(KC104)
-    val ipAddr = "172.20.11.101" // KC111
-    //val ipAddr = "192.168.10.15" // KICK 01
-    //val ipAddr = "192.168.10.16" // KICK 02
-    //val userName = "XXJEdeefpEJrKMfFJgjX0owEFyspfhlclRknCdWB" // KC101(KC104)
-    val userName = "MS4ah6torLCZ6vfaJwldQ15bhdbCQxdQv6S-XW12" // KC111
-    //val userName = "jy7Kk8cyAJ0XPmjj6vEzwEL3sV1OlJvjBU8gTT9i" // KICK 01
-    //val userName = "" // KICK 02
-    var url: String
+    var ipAddr : String = ""
+    var userName : String = ""
+    when (setting.room){
+        0 -> { // KICK
+            ipAddr = "192.168.10.15" // KICK 01
+            userName = "jy7Kk8cyAJ0XPmjj6vEzwEL3sV1OlJvjBU8gTT9i" // KICK 01
+        }
+        1 -> { // KICK
+            ipAddr = "192.168.10.16" // KICK 02
+            userName = "" // KICK 02
+        }
+        2 -> {
+            ipAddr = "172.20.11.101" // KC111
+            userName = "MS4ah6torLCZ6vfaJwldQ15bhdbCQxdQv6S-XW12" // KC111
+            //ipAddr = "172.20.11.99" // KC101(KC104)
+            //userName = "XXJEdeefpEJrKMfFJgjX0owEFyspfhlclRknCdWB" // KC101(KC104)
+        }
+    }
+
+    val url: String
     val client: OkHttpClient = OkHttpClient.Builder().build()
 
     // json生成
     //val json = JSONObject()
-    var json : String
+    val json : String
     var bri : Int = 0
     var color : String = ""
     if (state.w_bri == 0) {

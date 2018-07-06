@@ -41,3 +41,12 @@ data class States (
     var v_situ : String = "blank",
     var v_volume : Int = 0
 )
+
+/*
+0: 実験室1
+1: 実験室2
+2: テスト用
+*/
+data class Setting (
+    var room : Int = 2
+)
