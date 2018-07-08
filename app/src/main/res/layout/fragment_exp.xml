@@ -49,6 +49,7 @@
                 android:id="@+id/c_color_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="25dp"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -78,7 +79,7 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
+                android:paddingTop="35dp"
                 android:text="@string/exp_ce_bri"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_dark"
@@ -107,20 +108,23 @@
                         android:id="@+id/c_radio_bri_high"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/bri_high" />
+                        android:text="@string/bri_high"
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/c_radio_bri_mid"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:text="@string/bri_mid" />
+                        android:text="@string/bri_mid"
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/c_radio_bri_low"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/bri_low" />
+                        android:text="@string/bri_low"
+                        android:textSize="16sp" />
 
                 </RadioGroup>
 
@@ -241,30 +245,34 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                        <RadioButton
-                            android:id="@+id/w_radio_bri_high"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/bri_high" />
+                    <RadioButton
+                        android:id="@+id/w_radio_bri_high"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bri_high"
+                        android:textSize="16sp" />
 
-                        <RadioButton
-                            android:id="@+id/w_radio_bri_mid"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/bri_mid" />
+                    <RadioButton
+                        android:id="@+id/w_radio_bri_mid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bri_mid"
+                        android:textSize="16sp" />
 
-                        <RadioButton
-                            android:id="@+id/w_radio_bri_low"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/bri_low" />
+                    <RadioButton
+                        android:id="@+id/w_radio_bri_low"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bri_low"
+                        android:textSize="16sp" />
 
-                        <RadioButton
-                            android:id="@+id/w_radio_bri_zero"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:checked="true"
-                            android:text="@string/bri_zero" />
+                    <RadioButton
+                        android:id="@+id/w_radio_bri_zero"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/bri_zero"
+                        android:textSize="16sp" />
                 </RadioGroup>
 
             </LinearLayout>
