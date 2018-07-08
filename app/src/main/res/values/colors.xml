@@ -3,8 +3,4 @@
     <color name="colorPrimary">#213770</color>
     <color name="colorPrimaryDark">#0c0e35</color>
     <color name="colorAccent">#aa00ff</color>
-    <!-- round custom radio button -->
-    <color name="radio_color">#007aff</color>
-    <color name="radio_tap_color">#40007aff</color>
-    <color name="radio_white_color">#ffffff</color>
 </resources>

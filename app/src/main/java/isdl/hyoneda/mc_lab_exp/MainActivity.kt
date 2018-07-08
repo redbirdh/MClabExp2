@@ -1,18 +1,14 @@
 package isdl.hyoneda.mc_lab_exp
 
-import android.app.FragmentManager
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -74,7 +70,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_top -> {
-                supportFragmentManager.beginTransaction().replace(R.id.frameLayout, titleFragment()).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.frameLayout, TitleFragment()).commit()
             }
             R.id.nav_exp -> {
                 supportFragmentManager.beginTransaction().replace(R.id.frameLayout, ExpFragment()).commit()

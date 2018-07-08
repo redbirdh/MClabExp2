@@ -149,7 +149,7 @@ public class TableRadioGroup extends TableLayout {
     }
 
     public interface OnCheckedChangeListener {
-        public void onCheckedChanged(TableRadioGroup group, int checkedId);
+        void onCheckedChanged(TableRadioGroup group, int checkedId);
     }
 
     private class CheckedStateTracker implements CompoundButton.OnCheckedChangeListener {

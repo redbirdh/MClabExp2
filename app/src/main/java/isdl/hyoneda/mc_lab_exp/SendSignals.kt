@@ -33,38 +33,38 @@ fun tcpSendCeiling() {
                 host = "172.20.11.55"
             }
         }
-        val port : Int = 50001 // KICK
-        var white_sig : Int = 0
-        var warm_sig : Int = 0
+        val port = 50001 // KICK
+        var whiteSig = 0
+        var warmSig = 0
         if (state.c_color == 0 && state.c_bri == 0) {
-            white_sig = 23
-            warm_sig = 144
+            whiteSig = 23
+            warmSig = 144
         }else if (state.c_color == 0 && state.c_bri == 1) {
-            white_sig = 37
-            warm_sig = 235
+            whiteSig = 37
+            warmSig = 235
         }else if (state.c_color == 0 && state.c_bri == 2) {
-            white_sig = 55
-            warm_sig = 356
+            whiteSig = 55
+            warmSig = 356
         }else if (state.c_color == 1 && state.c_bri == 0) {
-            white_sig = 110
-            warm_sig = 53
+            whiteSig = 110
+            warmSig = 53
         }else if (state.c_color == 1 && state.c_bri == 1) {
-            white_sig = 181
-            warm_sig = 92
+            whiteSig = 181
+            warmSig = 92
         }else if (state.c_color == 1 && state.c_bri == 2) {
-            white_sig = 254
-            warm_sig = 124
+            whiteSig = 254
+            warmSig = 124
         }else if (state.c_color == 2 && state.c_bri == 0) {
-            white_sig = 160
-            warm_sig = 0
+            whiteSig = 160
+            warmSig = 0
         }else if (state.c_color == 2 && state.c_bri == 1) {
-            white_sig = 268
-            warm_sig = 0
+            whiteSig = 268
+            warmSig = 0
         }else if (state.c_color == 2 && state.c_bri == 2) {
-            white_sig = 390
-            warm_sig = 0
+            whiteSig = 390
+            warmSig = 0
         }
-        val message : String = "MANUAL_SIG-ALL\r\n$roomId,$white_sig,$warm_sig"
+        val message = "MANUAL_SIG-ALL\r\n$roomId,$whiteSig,$warmSig"
         val address = InetAddress.getByName(host)
         val socket = Socket(address, port)
         val fdin = socket.getInputStream()
@@ -104,7 +104,7 @@ fun tcpSendVM() {
                 host = "172.20.11.55"
             }
         }
-        val port : Int = 50005
+        val port = 50005
         var message : String = ""
         val address = InetAddress.getByName(host)
         val socket = Socket(address, port)
@@ -190,28 +190,7 @@ fun sendSignal(): Boolean{
     return ret
 }
 */
-fun sendSignal(_ip: String, _port: Int, _signal: String): Boolean{
-    val senderPort = 0
 
-    val data = _signal.toByteArray()
-
-    var ret = false
-    var socket: DatagramSocket? = null
-    try {
-        // socketオープン
-        socket = DatagramSocket(senderPort)
-        val address = InetAddress.getByName(_ip)
-        // データグラムパケットの構築
-        val packet = DatagramPacket(data, data.size, address, _port)
-        socket.send(packet)
-        ret = true
-    } catch (e: Exception) {
-        e.printStackTrace()
-    } finally {
-        socket?.close()
-    }
-    return ret
-}
 /*=========================================================================*/
 // jsonをputする
 //fun jsonPut(id: Int, flag: Boolean) {
