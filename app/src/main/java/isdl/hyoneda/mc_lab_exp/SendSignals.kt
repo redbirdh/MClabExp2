@@ -70,6 +70,8 @@ fun tcpSendCeiling() {
         val fdin = socket.getInputStream()
         val fdout = socket.getOutputStream()
         Log.i("ceiling", message)
+        // KICKでは効かんときあるからなんとなく2回送っている...
+        fdout.write(message.toByteArray())
         fdout.write(message.toByteArray())
         fdout.flush()
         fdin.close()
@@ -223,7 +225,7 @@ fun jsonPut() {
         }
         1 -> { // KICK
             ipAddr = "192.168.10.16" // KICK 02
-            userName = "" // KICK 02
+            userName = "c4iMVp5HYHtrBwZgr4W4MBTrfjt33WTq9fYQRnVb" // KICK 02
         }
         2 -> {
             ipAddr = "172.20.11.101" // KC111
@@ -279,6 +281,8 @@ fun jsonPut() {
     url = "http://$ipAddr/api/$userName/groups/1/action"
     request = Request.Builder().url(url).put(putBody).build()
     Log.i("wall", json)
+    // KICKでは効かんときあるからなんとなく2回送っている...
+    client.newCall(request).execute()
     client.newCall(request).execute()
 
     // getResult
