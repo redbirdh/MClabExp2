@@ -48,5 +48,6 @@ data class States (
 2: テスト用
 */
 data class Setting (
-    var room : Int = 2
+    var room : Int = 2,
+    var logFile : String = "default"
 )

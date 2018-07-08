@@ -3,6 +3,7 @@ package isdl.hyoneda.mc_lab_exp
 import android.content.DialogInterface
 import android.os.AsyncTask
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.support.v4.app.Fragment
@@ -12,22 +13,53 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioGroup
-import android.widget.Toast
+import java.io.File
+import java.io.PrintWriter
+import android.content.pm.PackageManager
+import android.Manifest.permission
+import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.support.v4.app.ActivityCompat
+
+
 
 /*
 * 環境変更画面
 *
 */
 
+// データセットの初期化
+var state = States()
+var setting = Setting()
+
+
 class ExpFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        SendSignalToCeiling().execute()
+        SendSignalToWall().execute()
+        SendSignalToVMSitu().execute()
+        SendSignalToVMVol().execute()
+
+        // 書き込み可能かチェック
+        val writable = Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
+        if (writable) {
+            val filePath = Environment.getExternalStorageDirectory().path + "/hyoneda_logs/" + "operationLog.txt"
+            val file = File(filePath)
+            try {
+                file.writeText("hoge")
+            } catch (e: Exception) {
+                Log.e("file exception", e.toString())
+            }
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
     }
 
     // UIに関してはここをいじる
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        println("expFlagment スタート")
         val v : View = inflater.inflate(R.layout.fragment_exp, container, false)
 
         // まとめてラジオグループをゲット
@@ -37,8 +69,6 @@ class ExpFragment : Fragment() {
         val waBriGroup : RadioGroup= v.findViewById(R.id.w_bri_group)
         val vmSituGroup : TableRadioGroup = v.findViewById(R.id.vm_situ_group)
         val vmVolumeGroup : RadioGroup = v.findViewById(R.id.vm_volume_group)
-
-        Log.i("aaaaaaaaaaaaaaaa", setting.room.toString())
 
         ceColorGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {

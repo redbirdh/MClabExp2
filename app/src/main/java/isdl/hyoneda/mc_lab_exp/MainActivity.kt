@@ -1,20 +1,23 @@
 package isdl.hyoneda.mc_lab_exp
 
+import android.Manifest
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-// データセットの初期化
-var state = States()
-var setting = Setting()
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -25,7 +28,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        println("main スタート")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
@@ -37,8 +39,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
+
+        // permission周り
+        val permission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        if ( permission != PackageManager.PERMISSION_GRANTED ) {
+            Log.e("PERMISSION", "Permission拒否")
+            // 権限をリクエスト
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
+        }
+
+
         // 初期画面をexp_fragmentにする
-        supportFragmentManager.beginTransaction().replace(R.id.frameLayout, ExpFragment()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.frameLayout, TitleFragment()).commit()
 
         // 設定画面を作ります
         val pref : SharedPreferences = applicationContext.getSharedPreferences("config", Context.MODE_PRIVATE)
@@ -49,6 +61,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
+        }
+    }
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+            0 -> {
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Log.i("PERMISSION", "Permission拒否")
+                } else {
+                    Log.i("PERMISSION", "Permission許可")
+                }
+            }
         }
     }
 /* 右上メニューの表示

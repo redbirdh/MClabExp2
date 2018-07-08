@@ -7,7 +7,7 @@
     <string name="menu_top">トップ画面</string>
     <string name="menu_exp">環境変更</string>
     <string name="menu_que">アンケート</string>
-    <string name="menu_admin">管理</string>
+    <string name="menu_admin">管理(使用禁止)</string>
 
     <string name="exp_title_ceiling">天井の照明</string>
     <string name="exp_title_wall">壁面の照明</string>

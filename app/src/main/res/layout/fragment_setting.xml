@@ -25,5 +25,11 @@
             android:layout_height="124dp"
             android:background="#5a000000"
             android:spinnerMode="dialog" />
+
+        <Button
+            android:id="@+id/newLogfile"
+            android:layout_width="309dp"
+            android:layout_height="114dp"
+            android:text="新規ログファイルを作成" />
     </LinearLayout>
 </FrameLayout>
