@@ -23,8 +23,7 @@
             android:id="@+id/EXP_ROOM"
             android:layout_width="434dp"
             android:layout_height="124dp"
-            android:background="#5a000000"
-            android:spinnerMode="dialog" />
+            android:background="#5a000000" />
 
         <Button
             android:id="@+id/newLogfile"

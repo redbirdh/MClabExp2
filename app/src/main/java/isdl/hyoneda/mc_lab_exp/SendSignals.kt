@@ -13,6 +13,8 @@ import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
+import java.sql.Time
+import java.util.concurrent.TimeUnit
 
 
 // TCP socket通信
@@ -66,7 +68,9 @@ fun tcpSendCeiling() {
         }
         val message = "MANUAL_SIG-ALL\r\n$roomId,$whiteSig,$warmSig"
         val address = InetAddress.getByName(host)
-        val socket = Socket(address, port)
+        val endPoint = InetSocketAddress(address, port)
+        val socket = Socket()
+        socket.connect(endPoint, 2000)
         val fdin = socket.getInputStream()
         val fdout = socket.getOutputStream()
         Log.i("ceiling", message)
@@ -78,7 +82,7 @@ fun tcpSendCeiling() {
         fdout.close()
     }
     catch(e : Exception){
-        Log.e("TCPソケット通信", e.toString())
+        Log.e("TCPソケット通信-天井照明", e.toString())
     }
 }
 /*=========================================================================*/
@@ -106,8 +110,9 @@ fun tcpSendVM() {
         }
         val port = 50005
         var message : String = ""
-        val address = InetAddress.getByName(host)
-        val socket = Socket(address, port)
+        val endPoint = InetSocketAddress(host, port)
+        val socket = Socket()
+        socket.connect(endPoint, 2000)
         val fdin = socket.getInputStream()
         val fdout = socket.getOutputStream()
 
@@ -124,7 +129,7 @@ fun tcpSendVM() {
         fdout.close()
     }
     catch(e : Exception){
-        Log.e("TCPソケット通信", e.toString())
+        Log.e("TCPソケット通信-擬似窓Situ", e.toString())
     }
 }
 // ボリューム変更
@@ -162,7 +167,7 @@ fun tcpSendVM2() {
         fdout.close()
     }
     catch(e : Exception){
-        Log.e("TCPソケット通信", e.toString())
+        Log.e("TCPソケット通信-擬似窓Vol", e.toString())
     }
 }
 /*
@@ -215,7 +220,12 @@ fun jsonPut() {
     }
 
     val url: String
-    val client: OkHttpClient = OkHttpClient.Builder().build()
+    val clients = OkHttpClient.Builder()
+    clients.connectTimeout(3, TimeUnit.SECONDS)
+    clients.readTimeout(3, TimeUnit.SECONDS)
+    clients.writeTimeout(3, TimeUnit.SECONDS)
+
+    val client = clients.build()
 
     // json生成
     //val json = JSONObject()
@@ -261,8 +271,13 @@ fun jsonPut() {
     request = Request.Builder().url(url).put(putBody).build()
     Log.i("wall", json)
     // KICKでは効かんときあるからなんとなく2回送っている...
-    client.newCall(request).execute()
-    client.newCall(request).execute()
+    try {
+        client.newCall(request).execute()
+        client.newCall(request).execute()
+    }catch (e:Exception){
+        Log.e("jsonPut", "JSONPUTに失敗")
+    }
+
 
     // getResult
     //val result: String? = response.body()?.string()

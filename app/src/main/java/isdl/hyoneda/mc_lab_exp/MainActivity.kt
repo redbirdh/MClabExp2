@@ -42,12 +42,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         // permission周り
         val permission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        val permission2 = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
         if ( permission != PackageManager.PERMISSION_GRANTED ) {
-            Log.e("PERMISSION", "Permission拒否")
+            Log.e("PERMISSION", "Permission拒否1")
             // 権限をリクエスト
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
+        }else{
+            Log.e("PERMISSION", "Permission1あり！")
+        }
+        if ( permission2 != PackageManager.PERMISSION_GRANTED ) {
+            Log.e("PERMISSION", "Permission拒否2")
+            // 権限をリクエスト
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 1)
+        }else{
+            Log.e("PERMISSION", "Permission2あり！")
         }
 
+        Log.i("パッケージ名", packageName)
 
         // 初期画面をexp_fragmentにする
         supportFragmentManager.beginTransaction().replace(R.id.frameLayout, TitleFragment()).commit()
@@ -65,7 +76,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         when (requestCode) {
-            0 -> {
+            0,1 -> {
                 if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     Log.i("PERMISSION", "Permission拒否")
                 } else {

@@ -62,7 +62,7 @@ class SettingFragment : Fragment() {
             val day = cal.get(Calendar.DATE)
             val hour = cal.get(Calendar.HOUR_OF_DAY)
             val minute = cal.get(Calendar.MINUTE)
-            setting.logFile = "$year"+"_"+ "$month" + "_" + "$day" + "_" + "$hour$minute.txt"
+            setting.logFile = "$year"+"_"+"$month"+"_"+"$day"+"_"+"$hour"+"_"+"$minute.txt"
             Log.i("setting", setting.logFile)
         }
 

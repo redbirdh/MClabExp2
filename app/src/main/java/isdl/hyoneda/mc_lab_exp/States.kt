@@ -4,7 +4,7 @@ package isdl.hyoneda.mc_lab_exp
 c_color
     0 : 3000K
     1 : 4500K
-    2 : 5500K
+    2 : 6000K
 c_bri
     0 : 300lx
     1 : 500lx
@@ -34,12 +34,12 @@ v_volume
 
 */
 data class States (
-    var c_color : Int = 0,
-    var c_bri : Int = 0,
-    var w_color : Int = 0,
+    var c_color : Int = 1,
+    var c_bri : Int = 1,
+    var w_color : Int = 1,
     var w_bri : Int = 0,
     var v_situ : String = "blank",
-    var v_volume : Int = 0
+    var v_volume : Int = 1
 )
 
 /*
@@ -48,6 +48,6 @@ data class States (
 2: テスト用
 */
 data class Setting (
-    var room : Int = 2,
-    var logFile : String = "default"
+    var room : Int = 0,
+    var logFile : String = "default.txt"
 )

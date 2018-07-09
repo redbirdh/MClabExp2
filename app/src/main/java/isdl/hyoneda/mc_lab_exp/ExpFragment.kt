@@ -19,7 +19,8 @@ import android.content.pm.PackageManager
 import android.Manifest.permission
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.support.v4.app.ActivityCompat
-
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 /*
@@ -33,9 +34,18 @@ var setting = Setting()
 
 
 class ExpFragment : Fragment() {
+
+    // 操作ログのためのstateのコピーのバッファ
+    var logBuff = mutableListOf<States>()
+    var logTime = mutableListOf<String>()
+
+    var startTime : Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // 環境のリセット
+        state = States().copy()
         SendSignalToCeiling().execute()
         SendSignalToWall().execute()
         SendSignalToVMSitu().execute()
@@ -44,18 +54,47 @@ class ExpFragment : Fragment() {
         // 書き込み可能かチェック
         val writable = Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
         if (writable) {
-            val filePath = Environment.getExternalStorageDirectory().path + "/hyoneda_logs/" + "operationLog.txt"
-            val file = File(filePath)
-            try {
-                file.writeText("hoge")
-            } catch (e: Exception) {
-                Log.e("file exception", e.toString())
+            val filePath = Environment.getExternalStorageDirectory().path + "/Android/data/isdl.hyoneda.mc_lab_exp/hyoneda_logs"
+            val fileDir = File(filePath)
+            Log.i("FILE", fileDir.exists().toString())
+            if (!fileDir.exists()) {
+                fileDir.mkdir()
             }
+            val file = File(filePath + "/" + setting.logFile)
+            // 書き込み先ファイルがあれば1行開けて追記。
+            // なければ作る
+            if (!file.exists()) {
+                try {
+                    file.createNewFile()
+                    file.writeText("START FLAG\n")
+                } catch (e: Exception) {
+                    Log.e("file1", e.toString())
+                }
+            }else{
+                file.appendText("NEW SETTION\n")
+            }
+
+        }else{
+            Log.e("FILE", "NOT WRITABLE!")
         }
+
+        startTime = System.currentTimeMillis()
     }
 
     override fun onStop() {
         super.onStop()
+
+        val writable = Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
+        if (writable) {
+            val filePath = Environment.getExternalStorageDirectory().path + "/Android/data/isdl.hyoneda.mc_lab_exp/hyoneda_logs/" + setting.logFile
+            val file = File(filePath)
+            val lines = logTime.zip(logBuff)
+            for ( line in lines) {
+                file.appendText(line.toString() + "\n")
+            }
+        }else{
+            Log.e("FILE", "NOT WRITABLE!")
+        }
     }
 
     // UIに関してはここをいじる
@@ -88,6 +127,8 @@ class ExpFragment : Fragment() {
                     SendSignalToCeiling().execute()
                 }
             }
+            logBuff.add(logBuff.lastIndex+1, state.copy())
+            logTime.add(logTime.lastIndex+1, getTimeCode())
         }
         ceBriGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {
@@ -107,6 +148,8 @@ class ExpFragment : Fragment() {
                     SendSignalToCeiling().execute()
                 }
             }
+            logBuff.add(logBuff.lastIndex+1, state.copy())
+            logTime.add(logTime.lastIndex+1, getTimeCode())
         }
         waColorGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {
@@ -142,6 +185,8 @@ class ExpFragment : Fragment() {
                 }
                 else -> throw IllegalArgumentException("not supported")
             }
+            logBuff.add(logBuff.lastIndex+1, state.copy())
+            logTime.add(logTime.lastIndex+1, getTimeCode())
         }
         waBriGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {
@@ -167,6 +212,8 @@ class ExpFragment : Fragment() {
                 }
                 else -> throw IllegalArgumentException("not supported")
             }
+            logBuff.add(logBuff.lastIndex+1, state.copy())
+            logTime.add(logTime.lastIndex+1, getTimeCode())
         }
         vmSituGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {
@@ -192,6 +239,8 @@ class ExpFragment : Fragment() {
                 }
                 else -> throw IllegalArgumentException("not supported")
             }
+            logBuff.add(logBuff.lastIndex+1, state.copy())
+            logTime.add(logTime.lastIndex+1, getTimeCode())
         }
         vmVolumeGroup.setOnCheckedChangeListener { _, checkedId: Int ->
             when (checkedId) {
@@ -217,9 +266,18 @@ class ExpFragment : Fragment() {
                 }
                 else -> throw IllegalArgumentException("not supported")
             }
+            logBuff.add(logBuff.lastIndex+1, state.copy())
+            logTime.add(logTime.lastIndex+1, getTimeCode())
         }
         return v
     }
+
+    // 経過時間から日付のフォーマットの文字列にして返す
+    private fun getTimeCode() : String {
+        val interval = System.currentTimeMillis() - startTime
+        return  SimpleDateFormat("mm:ss:SS", Locale.JAPAN).format(interval)
+    }
+
     inner class SendSignalToWall : AsyncTask<Void, Int, Void>() {
         override fun doInBackground(vararg params: Void): Void? {
             jsonPut()
