@@ -27,19 +27,13 @@ import java.util.*
 * 環境変更画面
 *
 */
-
-// データセットの初期化
-var state = States()
-var setting = Setting()
-
-
 class ExpFragment : Fragment() {
 
     // 操作ログのためのstateのコピーのバッファ
     var logBuff = mutableListOf<States>()
     var logTime = mutableListOf<String>()
 
-    var startTime : Long = 0
+    var startTime : Long = System.currentTimeMillis()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +61,7 @@ class ExpFragment : Fragment() {
                 try {
                     file.createNewFile()
                     file.writeText("START FLAG\n")
+                    startTime = System.currentTimeMillis()
                 } catch (e: Exception) {
                     Log.e("file1", e.toString())
                 }
@@ -77,8 +72,6 @@ class ExpFragment : Fragment() {
         }else{
             Log.e("FILE", "NOT WRITABLE!")
         }
-
-        startTime = System.currentTimeMillis()
     }
 
     override fun onStop() {

@@ -16,19 +16,62 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="この画面はさわらないでください"
+            android:textAlignment="center"
             android:textColor="?attr/colorError"
             android:textSize="40sp" />
 
-        <Spinner
-            android:id="@+id/EXP_ROOM"
-            android:layout_width="434dp"
-            android:layout_height="124dp"
-            android:background="#5a000000" />
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+            android:textAlignment="center" />
+
+        <RadioGroup
+            android:id="@+id/EXP_ROOM2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="40dp">
+
+            <RadioButton
+                android:id="@+id/room1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="実験室1"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/room2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="実験室2"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/room3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TEST"
+                android:textSize="18sp" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="新規被験者"
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/newLogfile"
-            android:layout_width="309dp"
-            android:layout_height="114dp"
-            android:text="新規ログファイルを作成" />
+            android:layout_width="273dp"
+            android:layout_height="103dp"
+            android:text="新規ログファイルを作成"
+            android:textAlignment="center" />
+
     </LinearLayout>
 </FrameLayout>
