@@ -48,7 +48,7 @@ class ExpFragment : Fragment() {
         // 書き込み可能かチェック
         val writable = Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
         if (writable) {
-            val filePath = Environment.getExternalStorageDirectory().path + "/Android/data/isdl.hyoneda.mc_lab_exp/hyoneda_logs"
+            val filePath = Environment.getExternalStorageDirectory().path + "/Android/data/isdl.hyoneda.mc_lab_exp"
             val fileDir = File(filePath)
             Log.i("FILE", fileDir.exists().toString())
             if (!fileDir.exists()) {
@@ -79,7 +79,7 @@ class ExpFragment : Fragment() {
 
         val writable = Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
         if (writable) {
-            val filePath = Environment.getExternalStorageDirectory().path + "/Android/data/isdl.hyoneda.mc_lab_exp/hyoneda_logs/" + setting.logFile
+            val filePath = Environment.getExternalStorageDirectory().path + "/Android/data/isdl.hyoneda.mc_lab_exp/" + setting.logFile
             val file = File(filePath)
             val lines = logTime.zip(logBuff)
             for ( line in lines) {

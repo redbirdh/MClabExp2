@@ -69,13 +69,11 @@ fun tcpSendCeiling() {
         val message = "MANUAL_SIG-ALL\r\n$roomId,$whiteSig,$warmSig"
         val address = InetAddress.getByName(host)
         val endPoint = InetSocketAddress(address, port)
-        val socket = Socket()
-        socket.connect(endPoint, 2000)
+        val socket = Socket(address, port)
+        //socket.connect(endPoint, 2000)
         val fdin = socket.getInputStream()
         val fdout = socket.getOutputStream()
         Log.i("ceiling", message)
-        // KICKでは効かんときあるからなんとなく2回送っている...
-        fdout.write(message.toByteArray())
         fdout.write(message.toByteArray())
         fdout.flush()
         fdin.close()
@@ -111,8 +109,7 @@ fun tcpSendVM() {
         val port = 50005
         var message : String = ""
         val endPoint = InetSocketAddress(host, port)
-        val socket = Socket()
-        socket.connect(endPoint, 2000)
+        val socket = Socket(host, port)
         val fdin = socket.getInputStream()
         val fdout = socket.getOutputStream()
 
@@ -221,10 +218,6 @@ fun jsonPut() {
 
     val url: String
     val clients = OkHttpClient.Builder()
-    clients.connectTimeout(3, TimeUnit.SECONDS)
-    clients.readTimeout(3, TimeUnit.SECONDS)
-    clients.writeTimeout(3, TimeUnit.SECONDS)
-
     val client = clients.build()
 
     // json生成
@@ -272,7 +265,6 @@ fun jsonPut() {
     Log.i("wall", json)
     // KICKでは効かんときあるからなんとなく2回送っている...
     try {
-        client.newCall(request).execute()
         client.newCall(request).execute()
     }catch (e:Exception){
         Log.e("jsonPut", "JSONPUTに失敗")
